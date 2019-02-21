@@ -1,0 +1,32 @@
+#include "iostream"
+#include "math.h"
+#include <iomanip>
+using namespace std;
+
+/*
+	计算π的近似值，利用公式：
+	π/2=[(2×2/(1×3))×[(4×4)/(3×5)]×…×[(n+1)×(n+1)/(n×(n+2))]
+	求圆周率的值，要求近似值截取到公式中的通项n,n的值从键盘输入。
+*/
+ 
+float cc(int a){
+	int i;
+	float x,y,temp=1.0;
+	for(i=1;i<=a;i=i+2){
+		x = (i+1) * (i+1) * 1.0;
+		y = i * (i+2) * 1.0;
+		temp = temp * (x / y);
+	}
+	return temp;
+}
+int main(){
+	int a;
+	cout<<fixed<<setprecision(6);
+	cin >> a;
+	if(a%2==0){
+		cout << "数字无效";
+	}else{
+		cout << cc(a)*2.0;
+	}
+	return 0;
+}
